@@ -788,6 +788,13 @@ NSInteger filter = [[NSUserDefaults standardUserDefaults] integerForKey:@"videoF
     
     EMU_setDPad(state & iNDSDirectionalControlDirectionUp, state & iNDSDirectionalControlDirectionDown, state & iNDSDirectionalControlDirectionLeft, state & iNDSDirectionalControlDirectionRight);
     
+    if (state != _previousDirection && state != 0) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"vibrate"])
+        {
+            [self vibrate];
+        }
+    }
+
     _previousDirection = state;
 }
 
